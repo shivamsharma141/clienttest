@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+
+/* ─── Hero Section ─────────────────────────────────────────── */
+.hero {
+  background: #4a9e6a;
+  padding: 100px 80px 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroEyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+}
+
+.heroTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.08;
+  max-width: 620px;
+  margin-bottom: 24px;
+}
+
+.heroSubtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 460px;
+  line-height: 1.7;
+}
+
+/* ─── Legacy Section ───────────────────────────────────────── */
+.legacySection {
+  background: #fff;
+  padding: 90px 80px;
+}
+
+.legacyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.legacyLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.cowEmoji {
+  font-size: 90px;
+  display: block;
+  margin-bottom: 28px;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.08));
+}
+
+.estCard {
+  background: #4a9e6a;
+  border-radius: 14px;
+  padding: 22px 30px;
+  color: #fff;
+  width: 100%;
+  max-width: 300px;
+}
+
+.estCardTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.estCardSub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 300;
+}
+
+.legacyRight {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sectionEyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #888;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.titleUnderline {
+  width: 60px;
+  height: 3px;
+  background: #4a9e6a;
+  border-radius: 2px;
+  margin-bottom: 30px;
+}
+
+.legacyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.legacyBody p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15.5px;
+  color: #555;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* ─── Journey Section ──────────────────────────────────────── */
+.journeySection {
+  background: #f5f3ee;
+  padding: 90px 80px;
+}
+
+.journeyHeader {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.journeyEyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #888;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.journeyTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  font-weight: 700;
+  color: #1a2e1f;
+  margin-bottom: 16px;
+}
+
+.journeySubtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #888;
+  font-weight: 300;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── Step Cards with Images ────────────────────────────────── */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.stepCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #ececec;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.stepCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+}
+
+/* Image area */
+.stepImgWrap {
+  position: relative;
+  width: 100%;
+  height: 190px;
+  overflow: hidden;
+}
+
+.stepImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.stepCard:hover .stepImg {
+  transform: scale(1.05);
+}
+
+/* Number badge over image */
+.stepNumBadge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #4a9e6a;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  padding: 5px 11px;
+  border-radius: 20px;
+}
+
+/* Text area */
+.stepBody {
+  padding: 22px 24px 26px;
+}
+
+.stepTitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.stepDesc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px;
+  color: #888;
+  line-height: 1.7;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ─── Promise Section ──────────────────────────────────────── */
+.promiseSection {
+  background: #fff;
+  padding: 90px 80px;
+}
+
+.promiseGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: start;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.promiseLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.promiseTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+
+.promiseBody {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 34px;
+}
+
+.promiseBody p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.promiseBody p strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14.5px;
+  color: #333;
+  font-weight: 400;
+}
+
+.checkIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eaf5ee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #4a9e6a;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.quoteCard {
+  background: #4a9e6a;
+  border-radius: 18px;
+  padding: 40px 36px;
+  color: #fff;
+  position: sticky;
+  top: 30px;
+}
+
+.quoteMark {
+  font-size: 28px;
+  color: rgba(255,255,255,0.50);
+  font-family: Georgia, serif;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.quoteText {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.quoteAuthor {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 4px;
+}
+
+.quoteOrg {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.50);
+  font-weight: 300;
+}
+
+/* ─── CTA Section ──────────────────────────────────────────── */
+.ctaSection {
+  background: #f9f9f7;
+  padding: 90px 80px;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a2e1f;
+  margin-bottom: 18px;
+}
+
+.ctaSubtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #888;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+.ctaBtn {
+  display: inline-block;
+  padding: 18px 48px;
+  background: #4a9e6a;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.ctaBtn:hover {
+  background: #3d8a5b;
+  transform: translateY(-2px);
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero, .legacySection, .journeySection, .promiseSection, .ctaSection {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .heroTitle { font-size: 52px; }
+  .sectionTitle, .journeyTitle { font-size: 38px; }
+  .promiseTitle { font-size: 34px; }
+  .stepsGrid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+
+@media (max-width: 768px) {
+  .hero, .legacySection, .journeySection, .promiseSection, .ctaSection {
+    padding: 60px 28px;
+  }
+  .heroTitle { font-size: 40px; }
+  .legacyGrid, .promiseGrid { grid-template-columns: 1fr; gap: 36px; }
+  .legacyLeft { align-items: center; text-align: center; }
+  .estCard { max-width: 100%; }
+  .stepsGrid { grid-template-columns: repeat(2, 1fr); }
+  .journeyTitle, .sectionTitle { font-size: 34px; }
+  .ctaTitle { font-size: 36px; }
+  .quoteCard { position: static; }
+}
+
+@media (max-width: 480px) {
+  .hero, .legacySection, .journeySection, .promiseSection, .ctaSection {
+    padding: 48px 18px;
+  }
+  .heroTitle { font-size: 32px; }
+  .heroSubtitle { font-size: 14px; }
+  .sectionTitle, .journeyTitle { font-size: 28px; }
+  .promiseTitle { font-size: 26px; }
+  .ctaTitle { font-size: 28px; }
+  .stepsGrid { grid-template-columns: 1fr; }
+  .stepImgWrap { height: 200px; }
+  .cowEmoji { font-size: 70px; }
+  .quoteText { font-size: 16px; }
+  .ctaBtn { width: 100%; text-align: center; }
+}
+
+@media (max-width: 360px) {
+  .heroTitle { font-size: 26px; }
+  .sectionTitle, .journeyTitle, .promiseTitle, .ctaTitle { font-size: 24px; }
+}

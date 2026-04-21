@@ -1,0 +1,603 @@
+/* ══════════════════════════════════════════════════
+   AUTH MODULE — Premium Green Organic Theme
+   Font: DM Serif Display + DM Sans
+   ══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --green-50:   #e8f5e9;
+  --green-100:  #c8e6c9;
+  --green-200:  #a5d6a7;
+  --green-400:  #66bb6a;
+  --green-500:  #43a047;
+  --green-700:  #2e7d32;
+  --green-900:  #1b5e20;
+  --cream:      #f9fbe7;
+  --white:      #ffffff;
+  --text-dark:  #1a2e1a;
+  --text-mid:   #4a6741;
+  --text-light: #7a9e77;
+  --border:     #c8e6c9;
+  --shadow-sm:  0 2px 8px rgba(27,94,32,0.08);
+  --shadow-md:  0 8px 32px rgba(27,94,32,0.13);
+  --shadow-lg:  0 20px 60px rgba(27,94,32,0.18);
+  --radius:     16px;
+  --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Page ── */
+.page {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #e8f5e9 0%, #f1f8e9 45%, #e0f2f1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Ambient background ── */
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.circle1 {
+  position: absolute;
+  top: -120px;
+  right: -140px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,199,132,0.25) 0%, transparent 70%);
+}
+
+.circle2 {
+  position: absolute;
+  bottom: -140px;
+  left: -100px;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(165,214,167,0.2) 0%, transparent 70%);
+}
+
+.leaf1 {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  font-size: 3.5rem;
+  opacity: 0.12;
+  transform: rotate(-20deg);
+  animation: sway 6s ease-in-out infinite alternate;
+}
+
+.leaf2 {
+  position: absolute;
+  bottom: 10%;
+  right: 6%;
+  font-size: 3rem;
+  opacity: 0.1;
+  transform: rotate(15deg);
+  animation: sway 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes sway {
+  from { transform: rotate(-20deg) scale(1); }
+  to   { transform: rotate(-10deg) scale(1.05); }
+}
+
+/* ── Card ── */
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2.8rem 2.6rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+  animation: cardIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Subtle inner glow */
+  background: linear-gradient(160deg, #ffffff 80%, #f1f8e9 100%);
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── Brand ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--green-100);
+}
+
+.brandIcon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.brandName {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: var(--green-900);
+  line-height: 1;
+}
+
+.brandSub {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── Step progress ── */
+.stepBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1.4rem;
+}
+
+.stepDot {
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--green-100);
+  transition: background var(--transition);
+}
+
+.stepActive {
+  background: var(--green-500);
+}
+
+.stepLabel {
+  margin-left: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeSlide 0.35s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.formHead {
+  margin-bottom: 0.4rem;
+}
+
+.title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 400;
+  color: var(--green-900);
+  margin: 0 0 0.3rem;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.sub {
+  font-size: 0.875rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.successNote {
+  font-size: 0.82rem;
+  color: var(--green-700);
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: 8px;
+  padding: 0.45rem 0.8rem;
+  margin: 0.2rem 0 0;
+  font-weight: 500;
+}
+
+/* ── Field ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 0.72rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  background: var(--green-50);
+  font-size: 0.93rem;
+  color: var(--text-dark);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  box-sizing: border-box;
+}
+
+.input::placeholder { color: var(--green-200); }
+
+.input:focus {
+  border-color: var(--green-500);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(67,160,71,0.15);
+}
+
+.inputErr {
+  border-color: #e53935 !important;
+  box-shadow: 0 0 0 3px rgba(229,57,53,0.1) !important;
+}
+
+.rightSlot {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+/* Eye button */
+.eyeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: color var(--transition);
+}
+.eyeBtn:hover { color: var(--green-700); }
+
+/* When rightSlot present, add padding */
+.inputWrap:has(.rightSlot) .input {
+  padding-right: 2.8rem;
+}
+
+.fieldErr {
+  font-size: 0.78rem;
+  color: #e53935;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  animation: errIn 0.25s ease both;
+}
+
+@keyframes errIn {
+  from { opacity: 0; transform: translateX(-6px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Forgot row ── */
+.forgotRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.2rem;
+}
+
+.forgotBtn {
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--green-700);
+  cursor: pointer;
+  padding: 2px 0;
+  transition: color var(--transition);
+  font-family: 'DM Sans', sans-serif;
+}
+.forgotBtn:hover { color: var(--green-900); text-decoration: underline; }
+
+/* ── Primary button ── */
+.primaryBtn {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--green-900);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  margin-top: 0.3rem;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.primaryBtn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+  pointer-events: none;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  background: var(--green-700);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(27,94,32,0.3);
+}
+
+.primaryBtn:active:not(:disabled) { transform: translateY(0); }
+
+.primaryBtn:disabled {
+  background: var(--green-200);
+  color: var(--green-400);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Ghost button ── */
+.ghostBtn {
+  width: 100%;
+  padding: 0.7rem;
+  background: transparent;
+  color: var(--text-mid);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+.ghostBtn:hover {
+  border-color: var(--green-400);
+  color: var(--green-900);
+  background: var(--green-50);
+}
+
+/* ── Switch row ── */
+.switchRow {
+  text-align: center;
+  font-size: 0.83rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.switchLink {
+  color: var(--green-700);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.switchLink:hover { color: var(--green-900); text-decoration: underline; }
+
+/* ── Spinner ── */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+}
+
+.ghostBtn .spinner {
+  border-color: rgba(46,125,50,0.3);
+  border-top-color: var(--green-700);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── OTP ── */
+.otpRow {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.otpBox {
+  width: 46px;
+  height: 54px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: 'DM Serif Display', serif;
+  color: var(--green-900);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--green-50);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition), transform var(--transition);
+  caret-color: var(--green-500);
+}
+
+.otpBox:focus {
+  border-color: var(--green-500);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(67,160,71,0.18);
+  transform: scale(1.05);
+}
+
+.otpFilled {
+  border-color: var(--green-400);
+  background: var(--white);
+}
+
+/* ── Timer ── */
+.timerRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 28px;
+}
+
+.timerText {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.timerCount {
+  font-weight: 700;
+  color: var(--green-700);
+  font-variant-numeric: tabular-nums;
+}
+
+.resendBtn {
+  background: none;
+  border: none;
+  color: var(--green-700);
+  font-size: 0.84rem;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background var(--transition), color var(--transition);
+}
+.resendBtn:hover { background: var(--green-50); color: var(--green-900); }
+.resendBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Password strength ── */
+.strengthWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -0.2rem;
+}
+
+.strengthBar {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+
+.strengthSeg {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.strengthLbl {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-width: 38px;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
+/* ── Match ok ── */
+.matchOk {
+  font-size: 0.78rem;
+  color: var(--green-700);
+  font-weight: 600;
+  margin: -0.3rem 0 0;
+}
+
+/* ── Success scene ── */
+.successScene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0;
+}
+
+.successRing {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-400), var(--green-700));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(67,160,71,0.35);
+  animation: popIn 0.5s cubic-bezier(0.36,0.07,0.19,0.97) both 0.1s;
+  margin-bottom: 0.4rem;
+}
+
+.successCheck {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 700;
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0) rotate(-20deg); opacity: 0; }
+  60%  { transform: scale(1.12) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.successScene .title { font-size: 1.4rem; }
+.successScene .primaryBtn { width: 100%; margin-top: 0.6rem; }
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1.4rem;
+    border-radius: 20px;
+  }
+
+  .title { font-size: 1.45rem; }
+
+  .otpBox {
+    width: 40px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .otpRow { gap: 6px; }
+}

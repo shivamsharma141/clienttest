@@ -1,0 +1,666 @@
+/* ── products.module.css ───────────────────────────────────────────────────
+   Gold accent  → #c9a84c
+   Green dark   → #0d2b1a
+   Green mid    → #1a4a2e
+   White text   → #f5f0e8
+   Muted text   → #a89a7a
+   Border       → rgba(201,168,76,0.2)
+──────────────────────────────────────────────────────────────────────────── */
+
+.section {
+  background:  #f7f4ee;
+  padding: 5rem 1.5rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201,168,76,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.labelLine {
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: #c9a84c;
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.sectionSub {
+  text-align: center;
+  font-size: 15px;
+  color: #a89a7a;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* ── Category Tabs ── */
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.tab {
+  padding: 9px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1.5px solid rgba(201,168,76,0.3);
+  background: transparent;
+  color: #a89a7a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+}
+
+.tab:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+  background: rgba(201,168,76,0.07);
+}
+
+.tabActive {
+  background: #c9a84c !important;
+  color: #0d1f12 !important;
+  border-color: #c9a84c !important;
+  font-weight: 600;
+}
+
+/* ── Cards Grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ── Product Card ── */
+.card {
+  background: #ffffff;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201,168,76,0.6);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(201,168,76,0.2);
+}
+
+/* ── Badge ── */
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 11px;
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  z-index: 2;
+}
+
+.badgeBESTSELLER {
+  background: #c9a84c;
+  color: #0d1f12;
+}
+
+.badgeFRESH {
+  background: #1d6b3f;
+  color: #a8f0c4;
+  border: 1px solid rgba(168,240,196,0.3);
+}
+
+/* ── Image Area ── */
+.cardImg {
+  background: #f0ebe0;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+
+.cardImgEl {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(240,235,224,0.4) 100%);
+  pointer-events: none;
+}
+
+.cardImgPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.placeholderIcon {
+  font-size: 2.6rem;
+  line-height: 1;
+  filter: grayscale(0.3);
+}
+
+.placeholderText {
+  font-size: 12px;
+  color: #7a8f80;
+  font-weight: 500;
+}
+
+.placeholderHint {
+  font-size: 10px;
+  color: rgba(201,168,76,0.5);
+  background: rgba(201,168,76,0.06);
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px dashed rgba(201,168,76,0.2);
+  letter-spacing: 0.03em;
+}
+
+/* ── Card Body ── */
+.cardBody {
+  padding: 1rem 1.1rem 0.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cardType {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.cardName {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a3a22;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+/* ── Variant List ── */
+.variantList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.variantRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.variantRow:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.3);
+}
+
+.variantSelected {
+  background: rgba(201,168,76,0.15) !important;
+  border-color: rgba(201,168,76,0.5) !important;
+}
+
+.variantLabel {
+  font-size: 13px;
+  color: #5a6e60;
+}
+
+.variantPrice {
+  font-size: 13px;
+  font-weight: 600;
+  color: #c9a84c;
+}
+
+.rupee {
+  font-size: 11px;
+  margin-right: 1px;
+}
+
+/* ── Card Footer ── */
+.cardFooter {
+  padding: 0.75rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba(201,168,76,0.2);
+  margin-top: 6px;
+}
+
+.selectedInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectedLabel {
+  font-size: 12px;
+  color: #8a9e90;
+}
+
+.selectedPrice {
+  font-size: 18px;
+  font-weight: 700;
+  color: #c9a84c;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+/* ── Button Row ── */
+.btnRow {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── Add to Cart Button ── */
+.btnCart {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2d7a4f 0%, #1a5c35 100%);
+  color: #f5f0e8;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnCart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201,168,76,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btnCart:hover::before { opacity: 1; }
+
+.btnCart:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(45,122,79,0.4);
+}
+
+.btnCart:active { transform: scale(0.98); }
+
+.btnAdded {
+  background: linear-gradient(135deg, #c9a84c 0%, #a8862e 100%) !important;
+  color: #0d1f12 !important;
+}
+
+/* ── Buy Now Button ── */
+.btnBuy {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #c9a84c 0%, #a8862e 100%);
+  color: #0d1f12;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnBuy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.btnBuy:hover::before { opacity: 1; }
+
+.btnBuy:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(201,168,76,0.45);
+}
+
+.btnBuy:active { transform: scale(0.98); }
+
+.btnOrdered {
+  background: linear-gradient(135deg, #2d7a4f 0%, #1a5c35 100%) !important;
+  color: #f5f0e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE — ALL DEVICES
+   1440px+ → Large desktop
+   1024px  → Laptop / small desktop
+   768px   → Tablet landscape
+   600px   → Tablet portrait
+   480px   → Large mobile
+   380px   → Small mobile (iPhone SE etc.)
+   320px   → Very small (Galaxy Fold)
+   ══════════════════════════════════════════ */
+
+/* ── Large Desktop 1440px+ ── */
+@media (min-width: 1440px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    max-width: 1400px;
+  }
+  .cardImg { height: 210px; }
+  .cardName { font-size: 1.2rem; }
+}
+
+/* ── Laptop / Small Desktop 1024px–1439px ── */
+@media (max-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .cardImg { height: 175px; }
+}
+
+/* ── Tablet Landscape — 2 col until 900px ── */
+@media (max-width: 1024px) {
+  .section { padding: 4rem 1.5rem 5rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; }
+  .cardImg { height: 200px; }
+  .sectionTitle { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 3.5rem 1.25rem 4rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 100%; }
+  .cardImg { height: 170px; }
+  .tabs { gap: 6px; margin-bottom: 2rem; }
+  .tab { padding: 8px 16px; font-size: 12px; }
+  .sectionSub { font-size: 14px; }
+}
+
+/* ── 750px and below → 1 column ── */
+@media (max-width: 750px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .cardImg { height: 220px; }
+  .cardName { font-size: 1.1rem; }
+  .variantLabel, .variantPrice { font-size: 13px; }
+  .btnCart, .btnBuy { font-size: 13px; padding: 12px 10px; }
+  .selectedPrice { font-size: 17px; }
+}
+
+/* ── Mobile 600px ── */
+@media (max-width: 600px) {
+  .section { padding: 2.5rem 1rem 3.5rem; }
+  .grid { max-width: 100%; gap: 12px; }
+  .cardImg { height: 190px; }
+  .cardBody { padding: 0.85rem 1rem 0.4rem; }
+  .cardFooter { padding: 0.65rem 1rem 1rem; }
+  .sectionTitle { font-size: clamp(1.6rem, 6vw, 2rem); }
+  .sectionSub { font-size: 13px; max-width: 100%; }
+  .sectionLabel { font-size: 10px; gap: 10px; }
+  .tabs { gap: 5px; }
+  .tab { padding: 6px 12px; font-size: 11px; }
+}
+
+/* ── Small Mobile 480px ── */
+@media (max-width: 480px) {
+  .section { padding: 2rem 0.875rem 3rem; }
+  .cardImg { height: 170px; }
+  .cardName { font-size: 1rem; }
+  .variantRow { padding: 6px 8px; }
+  .variantLabel, .variantPrice { font-size: 12px; }
+  .btnCart, .btnBuy { font-size: 12px; padding: 10px 8px; }
+  .badge { font-size: 9px; padding: 3px 8px; top: 8px; left: 8px; }
+  .placeholderHint { display: none; }
+}
+
+/* ── Very Small 380px ── */
+@media (max-width: 380px) {
+  .section { padding: 1.75rem 0.75rem 2.5rem; }
+  .sectionTitle { font-size: 1.5rem; }
+  .cardImg { height: 150px; }
+  .tab { padding: 6px 10px; font-size: 10px; }
+  .btnCart, .btnBuy { font-size: 11px; padding: 9px 6px; }
+}
+
+/* ── Galaxy Fold 320px ── */
+@media (max-width: 320px) {
+  .section { padding: 1.5rem 0.6rem 2rem; }
+  .sectionTitle { font-size: 1.3rem; }
+  .cardImg { height: 130px; }
+  .tabs { gap: 4px; }
+  .tab { padding: 5px 9px; font-size: 10px; }
+}
+
+
+
+/* ─── Login Required Toast ──────────────────────────────────── */
+/* Yeh classes apne existing product.module.css ke end mein add karein */
+
+.toastOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 14, 0.45);
+  backdrop-filter: blur(3px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: toastFadeIn 0.2s ease both;
+}
+
+.toast {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(10, 20, 14, 0.18);
+  animation: toastSlideUp 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  border: 1px solid #f0ede6;
+}
+
+.toastIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.toastContent {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.toastTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.toastMsg {
+  font-size: 13.5px;
+  color: #888;
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.toastActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toastLoginBtn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, #3d8e5e, #2e6b47);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(46, 107, 71, 0.28);
+}
+
+.toastLoginBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 7px 20px rgba(46, 107, 71, 0.34);
+}
+
+.toastCancelBtn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  color: #888;
+  border: 1.5px solid #e8e8e4;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.toastCancelBtn:hover {
+  background: #f5f4f0;
+  border-color: #d0cfc8;
+  color: #555;
+}
+
+.toastClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #aaa;
+  transition: background 0.2s, color 0.2s;
+}
+
+.toastClose:hover {
+  background: #f0ede6;
+  color: #555;
+}
+
+@keyframes toastFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
