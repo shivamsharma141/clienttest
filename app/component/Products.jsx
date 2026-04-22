@@ -4,6 +4,16 @@ import { useRouter } from 'next/navigation';
 import styles from './product.module.css';
 import { useCart } from '../component/Cartcontext.js';
 
+// ── TABS ARRAY (IMPORTANT - Ye chahiye) ───────────────────────
+const TABS = [
+  { key: 'all', label: 'All Products' },
+  { key: 'ghee', label: 'Ghee' },
+  { key: 'oil', label: 'Cold Pressed Oils' },
+  { key: 'butter', label: 'Butter' },
+  { key: 'paneer', label: 'Paneer' },
+];
+
+// ── PRODUCTS WITH IMAGES (Unsplash URLs) ──────────────────────
 const PRODUCTS = [
   {
     id: 'ghee-a2',
@@ -12,7 +22,7 @@ const PRODUCTS = [
     name: 'A2 Desi Cow Bilona Ghee',
     badge: 'BESTSELLER',
     icon: '🫙',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1604908811721-0f5e7c5f9b09?q=80&w=800',
     variants: [
       { label: '250 ml (Trial Pack)', price: 650 },
       { label: '500 ml (Glass Jar)', price: 1200 },
@@ -28,7 +38,7 @@ const PRODUCTS = [
     name: 'Buffalo Bilona Ghee',
     badge: null,
     icon: '🫙',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=800',
     variants: [
       { label: '250 ml', price: 450 },
       { label: '500 ml', price: 875 },
@@ -44,7 +54,7 @@ const PRODUCTS = [
     name: 'Yellow Mustard Cold Pressed Oil',
     badge: null,
     icon: '🏺',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1615485925600-97237c4fc1ec?q=80&w=800',
     variants: [
       { label: '1 Ltr (Glass Bottle)', price: 340 },
       { label: '2.5 Ltr (Dolchi Pack)', price: 800 },
@@ -58,7 +68,7 @@ const PRODUCTS = [
     name: 'Black Mustard Cold Pressed Oil',
     badge: null,
     icon: '🫙',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1604908554027-6b5f7c4f1c2d?q=80&w=800',
     variants: [
       { label: '1 Ltr', price: 280 },
       { label: '2.5 Ltr', price: 650 },
@@ -72,7 +82,7 @@ const PRODUCTS = [
     name: 'Pure Desi Butter (White)',
     badge: 'FRESH',
     icon: '🧈',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1589987607627-3e0f0a9a8c4b?q=80&w=800',
     variants: [
       { label: '100 gm (Box Pack)', price: 150 },
       { label: '250 gm (Box Pack)', price: 300 },
@@ -87,20 +97,12 @@ const PRODUCTS = [
     name: 'Fresh Desi Paneer',
     badge: 'FRESH',
     icon: '🥛',
-    image: null,
+    image: 'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=800',
     variants: [
       { label: '500 gm (Poly Pack)', price: 260 },
       { label: '1 Kg (Poly Pack)', price: 470 },
     ],
   },
-];
-
-const TABS = [
-  { key: 'all', label: 'All Products' },
-  { key: 'ghee', label: 'Ghee' },
-  { key: 'oil', label: 'Cold Pressed Oils' },
-  { key: 'butter', label: 'Butter' },
-  { key: 'paneer', label: 'Paneer' },
 ];
 
 // ── Login Required Toast ──────────────────────────────────────
@@ -147,22 +149,18 @@ function ProductCard({ product, onLoginRequired }) {
 
   const handleBuyNow = async () => {
     try {
-      // Check login status via /api/auth/me
       const res = await fetch('/api/auth/me', { credentials: 'include' });
       const data = await res.json();
 
       if (!data.user) {
-        // Not logged in — show toast
         onLoginRequired();
         return;
       }
 
-      // Logged in — add to cart and go to checkout
       addToCart(product, selectedVariant);
       router.push('/checkout');
 
     } catch {
-      // On error, assume not logged in
       onLoginRequired();
     }
   };
@@ -175,7 +173,6 @@ function ProductCard({ product, onLoginRequired }) {
         </div>
       )}
 
-      {/* Image Area */}
       <div className={styles.cardImg}>
         {product.image ? (
           <img src={product.image} alt={product.name} className={styles.cardImgEl} />
@@ -257,16 +254,12 @@ export default function Products() {
 
   const handleLoginRedirect = () => {
     setShowLoginToast(false);
-    // Agar aapke paas login modal/page hai toh yahan route karein
     router.push('/loggin');
-    // Ya agar navbar mein login modal trigger karna hai:
-    window.dispatchEvent(new CustomEvent('open-login-modal'));
   };
 
   return (
     <section className={styles.section} id="shop">
 
-      {/* Login Toast */}
       {showLoginToast && (
         <LoginToast
           onClose={() => setShowLoginToast(false)}

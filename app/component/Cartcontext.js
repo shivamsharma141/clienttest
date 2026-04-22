@@ -1,5 +1,11 @@
 "use client";
-import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
 
 const CartContext = createContext(null);
 
@@ -7,42 +13,49 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [hydrated, setHydrated] = useState(false);
 
-  // ✅ Load from localStorage on first render
+  // ✅ Load cart from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("gaav_cart");
-      if (saved) {
-        setCartItems(JSON.parse(saved));
+      const savedCart = localStorage.getItem("gaav_cart");
+      if (savedCart) {
+        setCartItems(JSON.parse(savedCart));
       }
-    } catch (e) {
-      console.log("Cart load error:", e);
+    } catch (error) {
+      console.error("Cart load error:", error);
     }
     setHydrated(true);
   }, []);
 
-  // ✅ Save to localStorage whenever cartItems changes
+  // ✅ Save cart to localStorage
   useEffect(() => {
     if (!hydrated) return;
     try {
       localStorage.setItem("gaav_cart", JSON.stringify(cartItems));
-    } catch (e) {
-      console.log("Cart save error:", e);
+    } catch (error) {
+      console.error("Cart save error:", error);
     }
   }, [cartItems, hydrated]);
 
+  // ✅ Add to Cart
   const addToCart = useCallback((product, variantIndex) => {
     const variant = product.variants[variantIndex];
+
+    // ✅ Unique item ID (product + variant)
     const itemId = `${product.id}-${variantIndex}`;
 
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.itemId === itemId);
-      if (existing) {
+      const existingItem = prev.find((item) => item.itemId === itemId);
+
+      if (existingItem) {
+        // ✅ Increase quantity if already exists
         return prev.map((item) =>
           item.itemId === itemId
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
+
+      // ✅ Add new item
       return [
         ...prev,
         {
@@ -50,8 +63,8 @@ export function CartProvider({ children }) {
           productId: product.id,
           name: product.name,
           categoryLabel: product.categoryLabel,
-          icon: product.icon,
-          image: product.image,
+          icon: product.icon || null,
+          image: product.image || null, // ✅ Image stored here
           variantLabel: variant.label,
           price: variant.price,
           quantity: 1,
@@ -60,10 +73,14 @@ export function CartProvider({ children }) {
     });
   }, []);
 
+  // ✅ Remove item
   const removeFromCart = useCallback((itemId) => {
-    setCartItems((prev) => prev.filter((item) => item.itemId !== itemId));
+    setCartItems((prev) =>
+      prev.filter((item) => item.itemId !== itemId)
+    );
   }, []);
 
+  // ✅ Update quantity
   const updateQuantity = useCallback((itemId, delta) => {
     setCartItems((prev) =>
       prev
@@ -76,7 +93,13 @@ export function CartProvider({ children }) {
     );
   }, []);
 
-  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  // ✅ Total Count
+  const cartCount = cartItems.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  );
+
+  // ✅ Total Price
   const cartTotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -84,7 +107,14 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, cartCount, cartTotal }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        cartCount,
+        cartTotal,
+      }}
     >
       {children}
     </CartContext.Provider>
@@ -92,7 +122,9 @@ export function CartProvider({ children }) {
 }
 
 export function useCart() {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used within CartProvider");
-  return ctx;
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within CartProvider");
+  }
+  return context;
 }
