@@ -8,13 +8,7 @@
 /* ─── Hero ─── */
 .hero {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    #c9dfcb 0%,
-    #d1ffd1 50%,
-    #9beb9e 70%,
-    #9eeba2 100%
-  );
+  background: linear-gradient(135deg, #c9dfcb 0%, #d1ffd1 50%, #9beb9e 70%, #9eeba2 100%);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -28,29 +22,20 @@
 .bgPattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    circle,
-    rgba(46, 107, 53, 0.13) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(46, 107, 53, 0.13) 1px, transparent 1px);
   background-size: 28px 28px;
   pointer-events: none;
   z-index: 0;
 }
 
-/* ─── Mandala glow (top-right ambient) ─── */
+/* ─── Mandala glow ─── */
 .mandalaBg {
   position: absolute;
   top: -18%;
   right: -8%;
   width: 60%;
   aspect-ratio: 1;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(201, 162, 39, 0.12) 0%,
-    rgba(201, 162, 39, 0.05) 45%,
-    transparent 70%
-  );
+  background: radial-gradient(circle at 50% 50%, rgba(201, 162, 39, 0.12) 0%, rgba(201, 162, 39, 0.05) 45%, transparent 70%);
   border-radius: 50%;
   animation: breathe 6s ease-in-out infinite;
   pointer-events: none;
@@ -82,7 +67,7 @@
   to { transform: rotate(360deg); }
 }
 
-/* ─── Nav ─── */
+/* ─── Nav (no links — logo + pill only) ─── */
 .nav {
   position: relative;
   z-index: 20;
@@ -233,9 +218,7 @@
 }
 
 /* ─── Headings ─── */
-.headingGroup {
-  line-height: 1;
-}
+.headingGroup { line-height: 1; }
 
 .headingWhite {
   font-family: 'Playfair Display', serif;
@@ -325,11 +308,7 @@
   transition: opacity 0.2s;
 }
 
-.btnPrimary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(27, 94, 32, 0.45);
-}
-
+.btnPrimary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(27, 94, 32, 0.45); }
 .btnPrimary:hover::before { opacity: 1; }
 
 .btnSecondary {
@@ -367,6 +346,7 @@
   align-items: center;
   padding-top: 4px;
   flex-wrap: wrap;
+  gap: 4px 0;
 }
 
 .stat {
@@ -418,7 +398,6 @@
   aspect-ratio: 1 / 1;
 }
 
-/* Spinning rings */
 .outerRing {
   position: absolute;
   inset: -16px;
@@ -437,7 +416,6 @@
   pointer-events: none;
 }
 
-/* Glow halo */
 .glowHalo {
   position: absolute;
   inset: -5%;
@@ -447,7 +425,6 @@
   pointer-events: none;
 }
 
-/* Image circle */
 .imgCircle {
   width: 100%;
   height: 100%;
@@ -470,19 +447,13 @@
   transition: transform 0.7s ease;
 }
 
-.imgCircle:hover .gheeImg {
-  transform: scale(1.06);
-}
+.imgCircle:hover .gheeImg { transform: scale(1.06); }
 
 .imgOverlay {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 30%,
-    rgba(201, 162, 39, 0.08) 0%,
-    rgba(200, 230, 201, 0.1) 100%
-  );
+  background: radial-gradient(circle at 35% 30%, rgba(201, 162, 39, 0.08) 0%, rgba(200, 230, 201, 0.1) 100%);
   pointer-events: none;
 }
 
@@ -522,9 +493,7 @@
   line-height: 1.5;
 }
 
-@keyframes rotateSeal {
-  to { transform: rotate(360deg); }
-}
+@keyframes rotateSeal { to { transform: rotate(360deg); } }
 
 /* ─── Floating badges ─── */
 .deliveryBadge {
@@ -603,52 +572,63 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ─── Marquee + Trust wrapper ─── */
-.bottomSection {
-  position: relative;
-  z-index: 10;
-  margin-top: auto;
-}
-
-/* ─── Trust Bar ─── */
+/* =============================================
+   TRUST BAR — fully responsive
+   ============================================= */
 .trustBar {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.6);
   border-top: 1px solid rgba(46, 107, 53, 0.15);
-  backdrop-filter: blur(8px);
-  display: flex;
+  border-bottom: 1px solid rgba(46, 107, 53, 0.1);
+  backdrop-filter: blur(10px);
+  /* Grid: auto-fill so items always center and wrap cleanly */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   align-items: center;
-  justify-content: center;
-  gap: clamp(10px, 2.5vw, 40px);
-  padding: 16px 5vw;
-  flex-wrap: wrap;
+  padding: 0;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .trustItem {
   display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: center;
+  gap: 8px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(0.72rem, 1.2vw, 0.9rem);
+  font-size: clamp(0.75rem, 1.3vw, 0.9rem);
   color: #2e6b35;
   font-weight: 700;
-  white-space: nowrap;
   letter-spacing: 0.04em;
-  transition: color 0.2s;
+  padding: 16px 12px;
+  transition: background 0.2s, color 0.2s;
   cursor: default;
+  border-right: 1px solid rgba(46, 107, 53, 0.12);
+  text-align: center;
+  white-space: nowrap;
 }
 
-.trustItem:hover { color: #c9a227; }
+/* Remove right border on last item */
+.trustItem:last-child,
+.trustItem:nth-child(odd):last-child {
+  border-right: none;
+}
 
-.trustDot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(201, 162, 39, 0.45);
+.trustItem:hover {
+  background: rgba(201, 162, 39, 0.08);
+  color: #c9a227;
+}
+
+.trustIcon {
+  font-size: 1.2em;
   flex-shrink: 0;
 }
 
-.trustIcon { font-size: 1em; }
+.trustText {
+  line-height: 1.2;
+}
+
+/* Hide the dot separators — grid handles spacing */
+.trustDot { display: none; }
 
 /* ============================================================
    RESPONSIVE
@@ -672,11 +652,7 @@
     gap: 20px;
     width: 100%;
   }
-  .heroDesc {
-    text-align: left;
-    max-width: 560px;
-    width: 100%;
-  }
+  .heroDesc { text-align: left; max-width: 560px; width: 100%; }
   .btnGroup { justify-content: center; }
   .statsRow { justify-content: center; }
   .heroRight { flex: 0 0 auto; width: 100%; padding: 0; }
@@ -685,6 +661,11 @@
   .floatBadge2 { right: -4%; top: 28%; }
   .deliveryBadge { left: -4%; }
   .nav { margin-bottom: 24px; }
+
+  /* Trust bar: 3 columns on tablet */
+  .trustBar {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* ── Large phone (≤767px) ── */
@@ -695,8 +676,23 @@
   .headingWhite { font-size: clamp(1.8rem, 6vw, 2.4rem); }
   .headingGold  { font-size: clamp(2rem, 6.5vw, 2.6rem); }
   .heroDesc { font-size: 0.92rem; max-width: 100%; }
-  .trustBar { gap: 10px 16px; }
   .marqueeTrack { animation-duration: 16s; }
+
+  /* Trust bar: 2 columns */
+  .trustBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trustItem {
+    padding: 14px 10px;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(46, 107, 53, 0.1);
+  }
+
+  /* Remove right border on every 2nd item */
+  .trustItem:nth-child(2n) {
+    border-right: none;
+  }
 }
 
 /* ── Phone (≤599px) ── */
@@ -725,9 +721,20 @@
   .statsRow { justify-content: center; }
   .stat { padding: 0 14px; align-items: center; }
   .statDivider { margin: 0; height: 30px; }
-  .trustBar { gap: 8px 14px; padding: 14px 4vw; }
-  .trustItem { font-size: 0.7rem; }
   .seal { display: none; }
+
+  /* Trust bar: 2 columns, compact */
+  .trustBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .trustItem {
+    padding: 12px 8px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .trustIcon { font-size: 1.1em; }
 }
 
 /* ── Small phone (≤480px) ── */
@@ -739,9 +746,14 @@
   .heroDesc { font-size: 0.87rem; line-height: 1.68; padding-left: 12px; }
   .circleWrap { width: clamp(150px, 68vw, 215px); }
   .eyebrow { font-size: 0.68rem; padding: 5px 12px; }
-  .trustBar { gap: 8px 10px; }
-  .trustItem { font-size: 0.67rem; gap: 5px; }
   .marqueeWrap { padding: 9px 0; }
+
+  /* Trust bar: still 2 cols but smaller text */
+  .trustItem {
+    padding: 11px 6px;
+    font-size: 0.7rem;
+    gap: 5px;
+  }
 }
 
 /* ── Tiny (≤359px) ── */
@@ -757,8 +769,20 @@
   .statLabel { font-size: 0.52rem; }
   .stat { padding: 0 10px; }
   .statDivider { height: 26px; margin-right: 0; }
-  .trustItem { font-size: 0.62rem; }
-  .trustBar { padding: 12px 3vw; gap: 6px 8px; }
+
+  /* Trust: single column on tiny phones */
+  .trustBar {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trustItem {
+    padding: 10px 4px;
+    font-size: 0.64rem;
+    gap: 4px;
+    border-right: 1px solid rgba(46, 107, 53, 0.1);
+  }
+
+  .trustItem:nth-child(2n) { border-right: none; }
 }
 
 /* ── Ultra-tiny (≤320px) ── */
@@ -776,51 +800,6 @@
   .statLabel { font-size: 0.5rem; letter-spacing: 0.08em; }
   .stat { padding: 0 8px; }
   .statDivider { height: 22px; margin-right: 0; }
-  .trustItem { font-size: 0.58rem; gap: 4px; }
-  .trustBar { padding: 10px 3vw; gap: 6px; }
-}
 
-
-
-/* Navigation Links */
-.navLinks {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-}
-
-.navLink {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  position: relative;
-  cursor: pointer;
-}
-
-.navLink:hover {
-  color: #d4af37;
-}
-
-.navLink::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #d4af37;
-  transition: width 0.3s ease;
-}
-
-.navLink:hover::after {
-  width: 100%;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .navLinks {
-    display: none;
-  }
+  .trustItem { font-size: 0.6rem; padding: 9px 4px; }
 }

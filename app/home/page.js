@@ -3,6 +3,8 @@
 import React from 'react';
 import styles from './home.module.css';
 import Products from '../component/Products.jsx';
+import Getintouch from '../component/Getintouch.jsx';
+import Footer from '../component/Footer';
 
 const MARQUEE_ITEMS = [
   'A2 Desi Cow Ghee', 'Bilona Method', 'Farm Fresh Paneer',
@@ -19,18 +21,13 @@ const TRUST_ITEMS = [
 ];
 
 export default function Home() {
-  /* Duplicate items so the seamless loop works */
   const marqueeItems = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
 
-  // Smooth scroll function
   const scrollToProducts = (e) => {
     e.preventDefault();
     const productsSection = document.getElementById('products');
     if (productsSection) {
-      productsSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+      productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -39,26 +36,18 @@ export default function Home() {
       {/* ── Hero Section ── */}
       <section className={styles.hero}>
 
-        {/* Dot-grid background */}
         <div className={styles.bgPattern}></div>
 
-        {/* Ambient radial glow + spinning rings (top-right) */}
         <div className={styles.mandalaBg}>
           <div className={styles.mandalaRing}></div>
           <div className={styles.mandalaRing2}></div>
         </div>
 
-        {/* ── Nav ── */}
+        {/* ── Nav (Logo + Pill only — links removed) ── */}
         <nav className={styles.nav}>
           <div className={styles.navLogo}>
             YASHODA
             <span className={styles.navLogoSub}>Dairy Farm &nbsp;·&nbsp; Est. 1987</span>
-          </div>
-          <div className={styles.navLinks}>
-            <a href="/" className={styles.navLink}>Home</a>
-            <a href="#products" onClick={scrollToProducts} className={styles.navLink}>Products</a>
-            <a href="#story" className={styles.navLink}>Our Story</a>
-            <a href="#contact" className={styles.navLink}>Contact</a>
           </div>
           <div className={styles.navPill}>✦ Bilona Method Certified</div>
         </nav>
@@ -83,7 +72,6 @@ export default function Home() {
           {/* ── Left Content ── */}
           <div className={styles.heroLeft}>
 
-            {/* Eyebrow label */}
             <div className={styles.eyebrow}>
               <span className={styles.eyebrowDot}></span>
               Bhati Family Farm &nbsp;·&nbsp; Since 1987
@@ -95,18 +83,10 @@ export default function Home() {
             </div>
 
             <p className={styles.heroDesc}>
-              <span className={styles.descLine1}>
-                🫙 A2 Desi Cow Bilona Ghee, Fresh Paneer,
-              </span>
-              <span className={styles.descLine2}>
-                Butter &amp; Cold-Pressed Oils —
-              </span>
-              <span className={styles.descLine3}>
-                Crafted the traditional way by the Bhati family
-              </span>
-              <span className={styles.descLine4}>
-                at Yashoda Dairy Farm, straight from our cows to your kitchen.
-              </span>
+              <span className={styles.descLine1}>🫙 A2 Desi Cow Bilona Ghee, Fresh Paneer,</span>
+              <span className={styles.descLine2}>Butter &amp; Cold-Pressed Oils —</span>
+              <span className={styles.descLine3}>Crafted the traditional way by the Bhati family</span>
+              <span className={styles.descLine4}>at Yashoda Dairy Farm, straight from our cows to your kitchen.</span>
             </p>
 
             <div className={styles.btnGroup}>
@@ -138,7 +118,7 @@ export default function Home() {
                 <span className={styles.statNum}>Delivery</span>
                 <span className={styles.statLabel}>All Over India</span>
               </div>
-               <div className={styles.statDivider}></div>
+              <div className={styles.statDivider}></div>
               <div className={styles.stat}>
                 <span className={styles.statNum}>37+</span>
                 <span className={styles.statLabel}>Years Legacy</span>
@@ -150,15 +130,9 @@ export default function Home() {
           {/* ── Right Visual ── */}
           <div className={styles.heroRight}>
             <div className={styles.circleWrap}>
-
-              {/* Spinning rings */}
               <div className={styles.outerRing}></div>
               <div className={styles.midRing}></div>
-
-              {/* Glow halo behind image */}
               <div className={styles.glowHalo}></div>
-
-              {/* Product image */}
               <div className={styles.imgCircle}>
                 <img
                   src="https://as2.ftcdn.net/v2/jpg/11/78/19/51/1000_F_1178195135_SqX3awKdhZaBlCPYxkE8mXwKmTqP4xBo.jpg"
@@ -167,18 +141,13 @@ export default function Home() {
                 />
                 <div className={styles.imgOverlay}></div>
               </div>
-
-              {/* Rotating seal badge */}
               <div className={styles.seal}>
                 <div className={styles.sealInner}></div>
                 <span className={styles.sealText}>PURE{'\n'}BILONA{'\n'}✦</span>
               </div>
-
-              {/* Floating chips */}
-              <div className={styles.deliveryBadge}>Cod only in Delhi 🚚</div>
+              <div className={styles.deliveryBadge}>COD only in Delhi 🚚</div>
               <div className={styles.floatBadge1}>Farm Fresh 🌿</div>
               <div className={styles.floatBadge2}>Desi Cow 🐄</div>
-
             </div>
           </div>
 
@@ -191,7 +160,7 @@ export default function Home() {
           <React.Fragment key={i}>
             <div className={styles.trustItem}>
               <span className={styles.trustIcon}>{item.icon}</span>
-              <span>{item.text}</span>
+              <span className={styles.trustText}>{item.text}</span>
             </div>
             {i < TRUST_ITEMS.length - 1 && (
               <div className={styles.trustDot}></div>
@@ -204,6 +173,12 @@ export default function Home() {
       <div id="products">
         <Products />
       </div>
+      {/* {the get in page} */}
+      <Getintouch />
+
+
+      {/* {the footer page} */}
+      <Footer />
     </>
   );
 }

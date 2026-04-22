@@ -18,6 +18,8 @@ const NAV_LINKS = [
   { label: "Products", href: "/home", scrollTo: "products" },
   { label: "Our Story", href: "/ourstory" },
   { label: "Contact", href: "/contact" },
+  { label: "Terms & Conditions", href: "/termsandcondition" },
+  { label: "Refund Policy", href: "/refund" },
 ];
 
 export default function Nav() {
