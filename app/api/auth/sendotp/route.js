@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { connectDB } from "@/app/lib/connect";
-import User from "@/app/models/User";
-import { transporter } from "@/app/lib/mailer";
+import { connectDB } from "@/lib/connect";
+import User from "@/models/User";
+import { transporter } from "@/lib/mailer";
 
 function generateOTP() {
   return Math.floor(100000 + Math.random() * 900000).toString();
